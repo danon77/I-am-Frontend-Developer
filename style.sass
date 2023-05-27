@@ -1,133 +1,136 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap')
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400'
+@import "https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@100;200;300;400;500;600;700&display=swap"
 
+*
+  margin: 0
+  text-shadow: 0.5px 0.5px 1px black
 %reset
-    margin: 0
-    padding: 0
+  margin: 0
+  padding: 0
 
 %flex
-    display: flex
-    justify-content: center
-    align-items: center
+  display: flex
+  justify-content: center
+  align-items: center
 
 @mixin animated($timein: null, $delay: null)
-    transition: all $timein ease-in-out
-    transition-delay: $delay
+  transition: all $timein ease-in-out
+  transition-delay: $delay
 
 @mixin dimensions($width: null, $height: null)
-    width: $width
-    min-height: $height
+  width: $width
+  min-height: $height
 
 $maincolor: #009688
 html
-    height: 100%
-
+  height: 100%
 body
+  @extend %flex
+  font-family: 'Open Sans', sans-serif
+  width: 100%
+  min-height: 100%
+  background: #009688
+  font-size: 16px
+  overflow: hidden
 
-    @extend %flex
-    font-family: 'Open Sans', sans-serif
-    width: 100%
-    min-height: 100%
-    background: lime
-    font-size: 16px
-    overflow: hidden
-
-    *, *:before, *:after
-        box-sizing: border-box
+*, *:before, *:after
+  box-sizing: border-box
 
 .content
-    position: relative
-    animation: animatop 3s cubic-bezier(0.425, 1.140, 0.470, 1.125) forwards
+  position: relative
+  animation: animatop 0.9s  cubic-bezier(0.425, 1.140, 0.470, 1.125) forwards
 
 .card
-@include dimensions(500px, 100px)
-padding: 20px
-border-radius: 20px
-background-color: #222
-box-shadow: 0px 10px 20px rgba(0, 0, 0)
-position: relative
-overflow: hidden
-&:after
+  @include dimensions( 500px,  100px)
+  padding: 20px
+  border-radius: 3px
+  background-color: white
+  box-shadow: 0px 10px 20px rgba(0,0,0,0.2)
+  position: relative
+  overflow: hidden
+  &:after
+    opacity: 0
+    border: 100px dotted gold
+    border-radius: 50%
+    position: absolute
     content: ''
     display: block
-    width: 170px
-    height: 300px
-    background: green
-    position: absolute
-    animation: rotatemagic 0.75s cubic-bezier(0.425, 1.040, 0.470, 1.105) 1s both
+    width: 800px
+    height: 800px
+    animation: rotatemagic 20s cubic-bezier(0.425, 1.040, 0.470, 1.105) 1s alternate infinite
 
 .badgescard
-    padding: 10px 20px
-    border-radius: 3px
-    background-color: #ECECEC
-    width: 480px
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2)
-    position: absolute
-    z-index: -1
-    left: 10px
-    bottom: 10px
-    @extend %flex
-    animation: animainfos 0.5s cubic-bezier(0.425, 1.040, 0.470, 1.105) 0.75s forwards
-    span
-        font-size: 1.6em
-        margin: 0px 6px
-        opacity: 0.6
-
-.devicons
-    font-size: 2em
-    margin: 0px 6px
-    opacity: 6
+  position: absolute
+  height: 70px
+  padding: 10px 20px
+  border-radius: 3px
+  background-color: #ECECEC
+  width: 500px
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2)
+  z-index: 1
+  bottom: 10px
+  @extend %flex
+  animation: animainfos 1.5s cubic-bezier(0.425, 1.040, 0.470, 1.105) 0.75s forwards
+span
+  font-size: 3.6rem
+  margin: 0px 6px
+  opacity: 0.6
 
 .firstinfo
-    @extend %flex
-    flex-direction: row
-    z-index: 2
-    position: relative
+  font-family: 'Mountains of Christmas', display
+  @extend %flex
+  flex-direction: row
+  z-index:2
+  position: relative
+  font-size: 26px
+
 img
-    border-radius: 50%
-    width: 120px
-    height: 120px
+  border-radius: 50%
+  width: 120px
+  height: 120px
+  box-shadow: 1px 5px 10px gold
 
 .profileinfo
-    padding: 0px 20px
+  padding: 0px 20px
+
 h1
-    font-size: 1.8em
-    font-family: 'Lobster', cursive
+  font-size: 37px
+
 h3
-    font-size: 1.2em
-    color: $maincolor
-    font-style: italic
-    font-family: 'Lobster', cursive
+  font-size: 34px
+  color: $maincolor
+  font-style: italic
 
 p.bio
-    padding: 10px 0px
-    color: #000
-    line-height: 1.5
-    font-style: initial
-    font-family: 'Lobster', cursive
+  padding: 10px 0px
+  color: #5A5A5A
+  font-style: initial
+  font-size: 24px
 
 @keyframes animatop
-    0%
-        opacity: 0
-        bottom: -500px
-    100%
-        opacity: 1
-        bottom: 0px
+  0%
+    opacity: 0
+    bottom: -500px
+  100%
+    opacity: 1
+    bottom: 0px
 
 @keyframes animainfos
-    0%
-        bottom: 10px
-    100%
-        bottom: -42px
+  0%
+    top:  -100px
+    opacity: 0.2
+  100%
+    top: 240px
+    opacity: 1
 
 @keyframes rotatemagic
-    0%
-        opacity: 0
-        transform: rotate(-0deg)
-        top: -24px
-        left: -253px
-
-    100%
-
-        transform: rotate(-30deg)
-        top: -24px
-        left: -78px
+  0%
+    opacity: 0.75
+    transform: rotate(0deg)
+    top: -24px
+    left: -253px
+  100%
+    transform: rotate(360deg)
+    top: -24px
+    left: -78px
+    opacity: 1
